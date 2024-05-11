@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Qr code</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+<nav>
+    <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="cartedevisite.html">carte de visite</a></li>
+    </ul>
+</nav>
+<body>
+    <section>
+        <label>Entrez votre lien ici</label>
+        <input type="texte" class="qr_texte" onchange="generateur()">
+        <div class="qr_code"></div>
+    </section>
+
+    <script src="qrcode.js"></script>
+    <script type="text/javascript">
+        var qr_texte = document.querySelector(".qr_texte")
+
+        function generateur() {
+            var qrcode = document.querySelector(".qr_code");
+            qrcode.style.display = "flex";
+            qrcode.innerHTML = "";
+            new QRCode(qrcode, qr_texte.value);
+            qr_texte.value ="";
+        }
+    </script>
+
+</body>
+
+</html>
