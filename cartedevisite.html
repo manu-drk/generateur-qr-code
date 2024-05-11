@@ -14,23 +14,6 @@
         </ul>
     </nav>
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div class="card-container">
-                <div class="card"></div>
-                <div class="image-container">
-                    <!-- Image -->
-                    <img src="" alt="Votre Image" id="uploadedImage" class="modal-image">
-                </div>
-                <div class="card-content">
-                    <!-- Contenu de la carte -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <form id="carteForm">
         <div class="form-group">
             <label for="logo">Logo:</label>
@@ -72,19 +55,44 @@
             <input type="email" id="email" name="email">
             <input type="checkbox" id="hideEmail"> <label for="hideEmail">Ne pas afficher</label>
         </div>
-        
-        <div class="form-group">
-            <label for="site">Site internet:</label>
-            <input type="url" id="site" name="site">
-            <input type="checkbox" id="hideSite"> <label for="hideSite">Ne pas afficher</label>
+
+        <!-- Ajouts pour la couleur du texte et du fond -->
+        <div class="form-group" id="colorTextContainer">
+            <label for="textColor">Couleur du texte:</label>
+            <input type="color" id="textColor" name="textColor">
         </div>
-        
-        <div class="form-group">
-            <label for="background">Couleur de fond:</label>
-            <input type="color" id="background" name="background">
+
+        <div class="form-group color-choice">
+            <label for="colorChoice">Choix de la couleur de fond:</label>
+            <input type="radio" id="solidColorChoice" name="colorChoice" value="solid">
+            <label for="solidColorChoice">Uni</label>
+            <input type="radio" id="gradientColorChoice" name="colorChoice" value="gradient">
+            <label for="gradientColorChoice">Dégradé</label>
         </div>
-        
-        <button type="button" onclick="generateCardAndOpenModal()">Générer la carte de visite</button>
+
+        <!-- Si choix dégradé -->
+        <div id="gradientOptions">
+            <div class="form-group" id="colorBackgroundContainer">
+                <label for="color1">Couleur 1:</label>
+                <input type="color" id="color1" name="color1">
+            </div>
+            <div class="form-group" id="colorBackgroundContainer">
+                <label for="color2">Couleur 2:</label>
+                <input type="color" id="color2" name="color2">
+            </div>
+            <div class="form-group" id="colorGradientDirection">
+                <label for="gradientDirection">Direction:</label>
+                <select id="gradientDirection" name="gradientDirection">
+                    <option value="to right">De gauche à droite</option>
+                    <option value="to left">De droite à gauche</option>
+                    <option value="to top">De haut en bas</option>
+                    <option value="to bottom">De bas en haut</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="button" id="submitButton">Valider</button>
+        <div id="errorMessage" class="errorMessage"></div>
     </form>
 
     <script src="carte.js"></script>

@@ -1,3 +1,4 @@
+// Fonction pour générer la carte de visite
 function generateCard() {
     // Récupération des valeurs du formulaire
     const entreprise = document.getElementById('entreprise').value;
@@ -7,7 +8,9 @@ function generateCard() {
     const telephone = document.getElementById('telephone').value;
     const email = document.getElementById('email').value;
     const site = document.getElementById('site').value;
-    const background = document.getElementById('background').value;
+    const textColor = document.getElementById('textColor').value;
+    const backgroundChoice = document.querySelector('input[name="backgroundChoice"]:checked').value;
+    const background = backgroundChoice === 'solid' ? document.getElementById('solidBackground').value : `linear-gradient(${document.getElementById('gradientDirection').value}, ${document.getElementById('startColor').value}, ${document.getElementById('endColor').value})`;
 
     // Vérification des cases à cocher pour déterminer les éléments à afficher
     const hideEntreprise = document.getElementById('hideEntreprise').checked;
@@ -30,7 +33,7 @@ function generateCard() {
 
         // Génération du code HTML de la carte de visite après la lecture de l'image
         const carteHTML = `
-            <div class="card" style="background-color: ${background};">
+            <div class="card" style="background: ${background}; color: ${textColor};">
                 <div class="image-container">
                     ${image.outerHTML}
                 </div>
@@ -53,6 +56,7 @@ function generateCard() {
     reader.readAsDataURL(logoFile);
 }
 
+// Fonction pour générer la carte de visite et ouvrir la modal
 function generateCardAndOpenModal() {
     generateCard(); // Génère la carte de visite
     openModal(); // Ouvre la modal après avoir généré la carte
@@ -67,3 +71,49 @@ function openModal() {
 function closeModal() {
     document.getElementById('myModal').style.display = 'none';
 }
+
+// Gestion de l'affichage des options de dégradé
+function toggleGradientOptions() {
+    const solidBackground = document.getElementById('solidBackground');
+    const gradientOptions = document.getElementById('gradientOptions');
+
+    gradientOptions.style.display = solidBackground.checked ? 'none' : 'block';
+}
+
+// Gestion de la validation du formulaire
+function validateForm() {
+    const entreprise = document.getElementById('entreprise').value;
+    const nom = document.getElementById('nom').value;
+    const prenom = document.getElementById('prenom').value;
+    const email = document.getElementById('email').value;
+    const errorMessage = document.getElementById('errorMessage');
+
+    if (entreprise === '' || nom === '' || prenom === '' || email === '') {
+        errorMessage.textContent = "Veuillez remplir tous les champs obligatoires.";
+        return false; // Empêcher la soumission du formulaire
+    }
+    return true; // Autoriser la soumission du formulaire si tous les champs sont remplis
+}
+
+// Gestion de l'affichage des erreurs au survol du bouton Valider
+function handleHover() {
+    const submitButton = document.getElementById('submitButton');
+    const entreprise = document.getElementById('entreprise');
+    const nom = document.getElementById('nom');
+    const prenom = document.getElementById('prenom');
+    const email = document.getElementById('email');
+    const errorMessage = document.getElementById('errorMessage');
+
+    submitButton.addEventListener('mouseenter', function() {
+        if (entreprise.value === '' || nom.value === '' || prenom.value === '' || email.value === '') {
+            errorMessage.textContent = "Veuillez remplir tous les champs obligatoires.";
+        } else {
+            errorMessage.textContent = ""; // Réinitialiser le message d'erreur s'il est vide
+        }
+    });
+}
+
+// Appel des fonctions au chargement du document
+document.addEventListener('DOMContentLoaded', function() {
+    handleHover();
+});

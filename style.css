@@ -56,7 +56,6 @@ section {
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
 }
 
 label {
@@ -69,7 +68,7 @@ input {
     width: 308px;
     font-size: 16px;
     padding: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     /* border-style: none; */
     border-color: rgba(222, 215, 215, 0.826);
     border-radius: 5px;
@@ -102,10 +101,12 @@ input:focus {
 
 #carteForm {
     background-color: rgba(222, 215, 215, 0.618);
-    width: 700px;
-    padding: 20px;
+    width: 800px;
+    padding: 15px;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-height: 80vh; /* Définir une hauteur maximale */
+    overflow-y: auto; 
 }
 
 .form-group {
@@ -171,25 +172,15 @@ input:focus {
     align-items: center;
     border-radius: 15px;
     justify-content: center;
+    position: relative; /* Ajout pour positionner la croix */
 }
 
-.modal-content .card img {
-    float: left;
-    width: 120px;
-    margin-right: 20px;
-    border-radius: 5px;
-}
-
-/* Contenu textuel dans la modal */
-.modal-content .card {
-    width: 500px;
-    height: 220px;
-}
-
-/* Bouton pour fermer la modal */
+/* Croix pour fermer la modal */
 .close {
     color: #aaa;
-    float: right;
+    position: absolute;
+    top: 10px;
+    right: 10px;
     font-size: 28px;
     font-weight: bold;
 }
@@ -199,4 +190,65 @@ input:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Conteneur de la carte */
+.modal-content .card-container {
+    display: flex;
+    flex-direction: column; /* Ajout pour aligner le titre et la carte verticalement */
+    align-items: center; /* Ajout pour aligner le titre et la carte horizontalement */
+    text-align: center; /* Ajout pour centrer le texte dans la carte */
+}
+
+/* Style du titre de la modal */
+#modalTitle {
+    margin-bottom: 20px; /* Ajout pour séparer le titre du contenu de la carte */
+}
+
+/* Ajouts */
+.color-choice {
+    display: flex;
+    align-items: center;
+}
+
+.color-choice label {
+    margin-right: 10px;
+}
+
+#colorBackgroundContainer,
+#colorTextContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#colorBackgroundContainer input[type="radio"],
+#colorTextContainer input[type="radio"] {
+    margin-right: 5px;
+}
+
+#colorGradientDirection {
+    margin-bottom: 15px;
+}
+
+#submitButton {
+    margin-top: 20px;
+    width: 150px;
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#submitButton:hover {
+    background-color: #555;
+}
+
+.errorMessage {
+    color: red;
+    margin-top: 10px;
 }
