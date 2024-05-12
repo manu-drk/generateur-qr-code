@@ -105,6 +105,10 @@ input:focus {
     justify-content: center;
     align-content: flex-start;
     flex-wrap: wrap;
+    
+        flex: 1; /* Pour permettre à la société de s'étendre sur le reste de la largeur */
+        /* Autres styles */
+    
 }
 .card-identity {
     display: flex;
@@ -130,6 +134,11 @@ input:focus {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     max-height: 80vh; /* Définir une hauteur maximale */
     overflow-y: auto; 
+}
+.image-container {
+    display: flex;
+    width: 150px;
+    margin-bottom: 10px;
 }
 .modal-image {
     display: flex;
@@ -194,8 +203,8 @@ input:focus {
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 50%;
-    height: 45%;
+    width: 55%;
+    height: 50%;
     display: flex;
     align-items: center;
     border-radius: 15px;

@@ -38,7 +38,7 @@ function generateCard() {
             <div class="image-container">
                 ${image.outerHTML}
             </div>
-            <div class="card-details">
+            <div class="card-content">
                 <div class="card-society">
                     ${!hideEntreprise ? `<p>${entreprise}</p>` : ''}
                 </div>
